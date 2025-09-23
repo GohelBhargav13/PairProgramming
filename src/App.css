@@ -1,0 +1,126 @@
+.homePageWrapper{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.formWrapper{
+    background: #282036;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    margin: auto
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    
+}
+
+.inputGroup{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.mainLabel{
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.inputBox{
+    padding: 8px;
+    outline: none;
+    border: none;
+    margin: 12px;
+    background: #eee;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+.btn {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: medium;
+    cursor: pointer;
+    transition: all 0.3 ease-in-out;
+}
+
+.joinbtn, .leaveBtn {
+    background: #4aed88;
+    width: 100px;
+    margin-left: auto;
+}
+.joinbtn:hover, .leaveBtn:hover {
+    background: #4aed70;
+}
+.createInfo {
+    margin: 0 auto;
+    margin-top: 8px;
+}
+.createRoom{
+    color: #4aed88;
+    text-decoration: none;
+    border-bottom: 1px solid #4aed70;
+    transition: all 0.3 ease-in-out;
+}
+.createRoom:hover{
+    color: #368654;
+    border-color: #368654;
+}
+
+.mainWrapper {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    height: 100vh;
+}
+
+.aside {
+    background: #14161f;
+    padding: 16px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.asideInner{
+    flex: 1;
+}
+
+.connectedUsers{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.client {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+
+}
+
+.client {
+    margin-top: 10px;
+}
+
+.leaveBtn{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.CodeMirror{
+    min-height: 50%;
+    height: 100%;
+    font-size: 19px;
+    line-break: 1.6;
+}
+
