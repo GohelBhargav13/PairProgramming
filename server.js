@@ -21,7 +21,7 @@ app.use((req,res,next) => {
 
 const io = new Server(server,{
     cors:{
-        origin:["http://localhost:5174","http://localhost:5173"],
+        origin:"https://pairprogramming.onrender.com",
         methods:["GET","POST"]
     }
 });
