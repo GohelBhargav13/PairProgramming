@@ -2,9 +2,22 @@ import express from "express"
 import http from "http"
 import { Server } from "socket.io";
 import ACTIONS from "./src/Actions.js"
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const server = http.createServer(app);
+
+// FOR SERVING STATIC FILES OF THE BUILD AFTER THIS IT IS RUN ON THE SERVER
+app.use(express.static("dist"))
+
+app.use((req,res,next) => {
+    res.sendFile(path.join(__dirname,"dist","index.html"))
+})
+
 
 const io = new Server(server,{
     cors:{
