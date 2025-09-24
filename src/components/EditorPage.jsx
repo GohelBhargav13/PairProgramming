@@ -11,6 +11,7 @@ import socket from '../server';
 function EditorPage() {
 
   const sockerRef = useRef(null);
+  const codeRef = useRef(null);
   
   const [clients,setClients] = useState([])
 
@@ -30,10 +31,12 @@ function EditorPage() {
     }
   }
 
-  useEffect(() => {
+  function leaveRoom(){
+    navigate("/")
+  }
 
+  useEffect(() => {
     //MAKE A EDITOR REF
-  
     const init = async() => {
       sockerRef.current = socket;
 
@@ -62,6 +65,11 @@ function EditorPage() {
             console.log(`${username} Joined`);
           }
 
+          sockerRef.current.emit(ACTIONS.SYNC_CODE,{
+            code:codeRef.current,
+            socketId
+          })
+
           console.log(client)
           setClients(client)
       })
@@ -80,7 +88,7 @@ function EditorPage() {
     return () => {
         // sockerRef.current.disconnect();
         sockerRef.current.off(ACTIONS.JOINED)
-        sockerRef.current.off(ACTIONS.DISCONNECTED)
+        // sockerRef.current.off(ACTIONS.DISCONNECTED)
     }
   },[])
 
@@ -106,10 +114,10 @@ function EditorPage() {
                 </div>
               </div>
               <button className='btn copyBtn' onClick={copiedId}>Copy ROOM ID</button>
-              <button className='btn leaveBtn'>Leave</button>
+              <button className='btn leaveBtn' onClick={leaveRoom}>Leave</button>
             </div>
             <div className='editorWrap'>
-              <Editor sockerRef={sockerRef} roomId={roomId} />
+              <Editor sockerRef={sockerRef} roomId={roomId} OncodeChange={(code) => codeRef.current = code } />
             </div>
         </div>
     </>

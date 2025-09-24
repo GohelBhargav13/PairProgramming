@@ -58,6 +58,11 @@ io.on('connection',(socket) => {
         socket.in(roomId).emit(ACTIONS.CODE_CHANGE,{ code,user })
     })
 
+     // SEND THE CODE TO THE ALL CLIENTS
+    socket.on(ACTIONS.SYNC_CODE,({socketId,code}) => {
+       io.to(socketId).emit(ACTIONS.CODE_CHANGE,{ code })
+    })
+
 
     socket.on("disconnecting",() => {
         // GOT THE ALL ROOMS ON SOCKET

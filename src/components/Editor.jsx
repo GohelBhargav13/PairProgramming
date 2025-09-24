@@ -16,7 +16,7 @@ import "codemirror/addon/edit/closebrackets.js";
 import "codemirror/addon/edit/closetag.js";
 import toast from "react-hot-toast";
 
-function Editor({ sockerRef, roomId }) {
+function Editor({ sockerRef, roomId, OncodeChange }) {
   console.log(sockerRef);
   // A REFERENCE TO THE EDITOR
   const editorRef = useRef(null);
@@ -43,6 +43,7 @@ function Editor({ sockerRef, roomId }) {
         const { origin } = changes;
         const code = instance.getValue();
         // console.log(code);
+        OncodeChange(code);
 
         if (origin !== "setValue") {
           sockerRef.current.emit(ACTIONS.CODE_CHANGE, {
